@@ -1,16 +1,33 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-class Game:
+# Create input for user's name to signify their board.
+
+name_input = input("name:")
+print_name = (name_input + "'s board!")
+print(print_name)
+         
+   
+# Create variables to set a 5x5 grid play Battleships.
+empty_list = []
+grid_row = "." * 5
+empty_list.append(" ".join(grid_row))
+grid = empty_list * 5
+
+
+def create_battleship_board():
     """
-    Main board game. Set the size of the board, the number of ships, 
-    the name of the player and the type 
-    being computer player board or user player board.
+    Define a function to create a 5x5 board to play the game Battleships.
     """
-    def __init__(self, size, ships, name, type):
-        self.size = size
-        self.ships = [["." for x in range(size)] for y in range(size)]
-        self.name = name
-        self.type = type
-        self.guess_list = []
-        self.ships_list = []
+    for values in grid:
+        print(" ".join([x for x in values]), "\n")
+
+
+
+
+
+#def place_ship(grid):
+ #   board.append("S")
+  #  print(grid)
+
+
+# place_ship(grid)    
+
+board = create_battleship_board()

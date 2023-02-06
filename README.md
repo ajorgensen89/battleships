@@ -1,3 +1,7 @@
+Making a grid.
+https://stackoverflow.com/questions/23177075/printing-a-list-into-grid
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome ajorgensen89,
