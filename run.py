@@ -1,8 +1,12 @@
+# Imported Libaries
 import os
 # Create input for user's name to signify their board.  
  
   
 def name_input():
+    """
+    Create name for use's Battleship Board
+    """
     print("="*25)
     print("WELCOME TO BATTLESHIPS")
     print("Select a row: 0 to 4")
@@ -40,4 +44,4 @@ def create_battleship_board():
 
 create_battleship_board()
 
-#Select "." on grid
+# Select "." on grid
