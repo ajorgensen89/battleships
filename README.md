@@ -1,35 +1,35 @@
 Making a grid.
 https://stackoverflow.com/questions/23177075/printing-a-list-into-grid
 
+# Create input for user's name to signify their board.    
 
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+name_input = input("name:")
+if not name_input:
+    print("Not Valid...")
+else:
+    print_name = (name_input + "'s board!")
+    print(print_name)
 
-Welcome ajorgensen89,
+# Create variables to set a 5x5 grid play Battleships.
+empty_list = []
+grid_row = "." * 5
+empty_list.append(" ".join(grid_row))
+grid = empty_list * 5
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+class Board:
+    """
+    Board
+    """
+    def create_battleship_board():
+        """
+        Define a function to create a 5x5 board to play the game Battleships.
+        """
+        for values in grid:
+            board = " ".join([x for x in values])
+            # return board + '\n'
+            print(board + '\n')
+ 
 
-## Reminders
+create_battleship_board()
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+#Select "." on grid
