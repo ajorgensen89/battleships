@@ -1,47 +1,14 @@
-# Imported Libaries
-import os
-# Create input for user's name to signify their board.  
- 
-  
-def name_input():
-    """
-    Create name for use's Battleship Board
-    """
-    print("="*25)
-    print("WELCOME TO BATTLESHIPS")
-    print("Select a row: 0 to 4")
-    print("and")
-    print("Select a column: 0 to 4")
-    print("=" * 25)
+HIDDEN = "."
+BATTLESHIP = "S"
+HIT = "X"
 
-    name_input = input("Enter a name:")
-    if not name_input:
-        print("Not Valid...")
-        os.system("run.py")
-    else:
-        print_name = (name_input + "'s board!")
-        print(print_name)
-
-
-name_input()        
-
-# Create variables to set a 5x5 grid play Battleships.
-empty_list = []
-grid_row = "." * 5
-empty_list.append(" ".join(grid_row))
-grid = empty_list * 5
-
-
-def create_battleship_board():
-    """
-    Define a function to create a 5x5 board to play the game Battleships.
-    """
-    for values in grid:
-        board = " ".join([x for x in values])
-        # return board + '\n'
-        print(board + '\n')
-
-
-create_battleship_board()
-
-# Select "." on grid
+class Board:
+    def __init__(self, name, size, type, board):
+        self.name = name
+        self.size = size
+        self.type = type
+        self.board = [[HIDDEN] for x in range(1,6) for _ in range(1,6)]
+        self.guesses = []
+        self.ships = []
+board = [[HIDDEN] for x in range(1,6) for _ in range(1,6)]
+print(board)        
