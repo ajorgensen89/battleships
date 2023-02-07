@@ -1,5 +1,3 @@
-Making a grid.
-https://stackoverflow.com/questions/23177075/printing-a-list-into-grid
 
 Making a choice.
 https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship
