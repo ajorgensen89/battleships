@@ -1,58 +1,9 @@
 Making a grid.
 https://stackoverflow.com/questions/23177075/printing-a-list-into-grid
 
-# Create input for user's name to signify their board.    
+Making a choice.
+https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship
 
-name_input = input("name:")
-if not name_input:
-    print("Not Valid...")
-else:
-    print_name = (name_input + "'s board!")
-    print(print_name)
-
-# Create variables to set a 5x5 grid play Battleships.
-empty_list = []
-grid_row = "." * 5
-empty_list.append(" ".join(grid_row))
-grid = empty_list * 5
-
-class Board:
-    """
-    Board
-    """
-    def create_battleship_board():
-        """
-        Define a function to create a 5x5 board to play the game Battleships.
-        """
-        for values in grid:
-            board = " ".join([x for x in values])
-            # return board + '\n'
-            print(board + '\n')
- 
-
-create_battleship_board()
-
-#Select "." on grid
-
-# Create variables to set a 5x5 grid play Battleships.
-empty_list = []
-grid_row = "." * 5
-empty_list.append(" ".join(grid_row))
-grid = empty_list * 5
-
-
-def create_battleship_board():
-    """
-    Define a function to create a 5x5 board to play the game Battleships.
-    """
-    for values in grid:
-        board = " ".join([x for x in values])
-        # return board + '\n'
-        print(board + '\n')
-
-def run_game:
- create_battleship_board()
-
-
-# Select "." on grid
- 
+Trial and Errors.<br>
+Tried using Append() method to add a HIT or MISS to the Battleship Board but it was not working correctly as I had not identified the user's guess for row and column are in separate lists. It lead to it just being added to the list and not changing the current "o" character which makes the hidden board.<br>
+![Append atempt](images/readme-images/Append.board.png)
