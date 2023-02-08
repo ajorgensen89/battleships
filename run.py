@@ -1,5 +1,6 @@
 from random import randint
 import random
+import numpy as numpyCount
 
 
 def get_name_input():
@@ -50,13 +51,14 @@ def validate_input(value):
 
     return True
 
-# Saved name input for players board to be named in data variable.
+# Saved name input in 'data' variable.
 
 
 data = get_name_input()
 
 
-# Storage variables for guesssing a row and column.
+# If name input is entered. This input prompt is showned for user.
+# Storage variables for guesssing a row and column input as an integer.
 guess_row = int(input("GUESS ROW:\n"))
 guess_column = int(input("GUESS COLUMN:\n"))
 
@@ -67,21 +69,19 @@ def player_guess():
     """
     while True:
         # Input from the user for row and column choice.
-        if validate_player_guess(guess_row):
+        if validate_player_guess(guess_row, guess_column):
             print("Working...")
             break
-        if validate_player_guess(guess_column):
-            print("working too..")
-            break
+
         return guess_row, guess_column
 
 
-def validate_player_guess(guessed):
+def validate_player_guess(guessed_row, guessed_column):
     """
     Errors for grid ranges. Raise error if out of range of the board length.
     """
     try:
-        if guessed >= 5:
+        if guessed_row and guessed_column >= 5:
             raise ValueError(
                 "Out of grid range! Try again."
             )
@@ -116,29 +116,37 @@ def board_game(board):
     for row in board:
         print((" ").join(row))
 
-# Place one ship randomly on the grid
-
 
 # Prints one Battleship 'S', randomly on the board.
 # Which is only revealed after a turn.
+board_game(board)
+
 random_row = randint(0, len(board))
 random_column = randint(0, len(board[0]))
 
 
-if guess_row == random_row and guess_column == random_column:
-    print("HIT. Marked with a '*' on the board")
-    print(f"The Battleship sunk on Row:{guess_row} and Column:{guess_column}")
-    print(data, "'s Board")
-    board[guess_row][guess_column] = "*"
+turn_counter = 5
+while turn_counter > 0:
     print(board_game(board))
-else:
-    print("MISSED. Marked with an 'X' on the board")
-    print(f"It was on Row:{random_row} and Column:{random_column}")
-    print("The Battleship's position is marked with an 'S' on the board")
-    print(data, "'s Board")
-    board[random_row][random_column] = "S"
-    board[guess_row][guess_column] = "X"
-    print(board_game(board))
-
-
-board_game(board)
+    print("turn_counter")
+    if guess_row == random_row and guess_column == random_column:
+        print("HIT. Marked with a '*' on the board")
+        print(f"The Battleship sunk on Row:{guess_row} and Column:{guess_column}")
+        print(data, "'s Board")
+        board[guess_row][guess_column] = "*"
+        print(board_game(board))        
+        print("Turn:", turn_counter)
+        turn_counter -= 1
+    else:
+        print("MISSED. Marked with an 'X' on the board")
+        print(f"It was on Row:{random_row} and Column:{random_column}")
+        print("The Battleship's position is marked with an 'S' on the board")
+        print(data, "'s Board")
+        board[random_row][random_column] = "S"
+        board[guess_row][guess_column] = "X"
+        print(board_game(board))        
+        print("Turn:", turn_counter)
+        turn_counter -= 1
+    if turn_counter == 1:
+        print("Game Over!") 
+        break    

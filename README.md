@@ -14,3 +14,11 @@ Method for showing a hit on a Battleship in combat.<br>
 # Create empty list to store the game's board.
 board = []
 computer = []
+
+from collections import Counter
+list = [1, 2, 3, 4]
+ob = Counter(list)
+items = ob.items()
+for i in items:
+     print(i)
+ 
