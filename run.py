@@ -78,6 +78,8 @@ def board_game(board):
 random_row = randint(1, len(board)) - 1
 random_column = randint(1, len(board[0])) - 1
 
+
+# For loop, to play the game on the grid created.
 for battle in range(4):
     # Trying to use the player_guess() function here with value.
     # saved in variable = decision
