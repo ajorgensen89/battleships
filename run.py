@@ -54,7 +54,6 @@ def validate_input(value):
 
 data = get_name_input()
 
-
 # Create empty list to store the game's board.
 board = []
 
@@ -78,14 +77,18 @@ def board_game(board):
 random_row = randint(1, len(board)) - 1
 random_column = randint(1, len(board[0])) - 1
 
-
 # For loop, to play the game on the grid created.
-for battle in range(4):
-    # Trying to use the player_guess() function here with value.
-    # saved in variable = decision
+
+for battle in range(5):
     guess_row = int(input("GUESS ROW:\n"))
     guess_column = int(input("GUESS COLUMN:\n"))
-    # if decision:
+    try:
+        if guess_row and guess_column < 0 or guess_row and guess_column > 5:
+            print("Re enter a valid row and column number between 0-4")
+            guess_row = int(input("GUESS ROW:\n"))
+            guess_column = int(input("GUESS COLUMN:\n"))
+    except ValueError:
+        print("error")
     if guess_row == random_row and guess_column == random_column:
         print("HIT. Marked with a '*' on the board")
         print(f"The Battleship sunk on Row:{guess_row}")
@@ -93,6 +96,7 @@ for battle in range(4):
         print(data, "'s Board")
         board[guess_row][guess_column] = "*"
         print(board_game(board))
+        break
     else:
         print("MISSED. Marked with an 'X' on the board")
         print(f"It was on Row:{random_row} and Column:{random_column}")
@@ -100,44 +104,12 @@ for battle in range(4):
         print(data, "'s Board")
         board[guess_row][guess_column] = "X"
         print(board_game(board))
-    if guess_row and guess_column == "X":
+    if guess_row and guess_column == str("X"):
         print("You have guessed that elready. Try again.")
         guess_row = int(input("GUESS ROW:\n"))
         guess_column = int(input("GUESS COLUMN:\n"))
-        break
 
+print("Game Over. You did not sink the Battleship")
+print(f"The Batttleship was on Row: {random_row} Column: {random_column}")   
 board[random_row][random_column] = "S"
 print(board_game(board))
-
-
-def player_guess():
-    """
-    To validate integer range for row and column by user.
-    Guess should be between 0-4.
-    """
-    while True:
-        # Input from the user for row and column choice.
-        if validate_player_guess(guess_row, guess_column):
-            print("Working...")
-            break
-        return guess_row, guess_column
-
-
-def validate_player_guess(guessed_row, guessed_column):
-    """
-    Errors for grid ranges. Raise error if out of range of the board length.
-    """
-    try:
-        if guessed_row and guessed_column >= 5:
-            print("Incorrect Enteries:", decision)
-            raise ValueError(
-                "Out of grid range! Try again."
-            )
-    except ValueError as v_err:
-        print(f"Oops. {v_err}")
-        return False
-
-    return True
-
-
-decision = player_guess()
