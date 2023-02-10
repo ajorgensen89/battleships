@@ -103,13 +103,25 @@ for battle in range(5):
         print("Battleship is marked with an 'S'")
         print(data, "'s Board")
         board[guess_row][guess_column] = "X"
+        print(f"Batttleship was on Row:{random_row}Column:{random_column}") 
         print(board_game(board))
     if guess_row and guess_column == str("X"):
         print("You have guessed that elready. Try again.")
         guess_row = int(input("GUESS ROW:\n"))
         guess_column = int(input("GUESS COLUMN:\n"))
 
-print("Game Over. You did not sink the Battleship")
-print(f"The Batttleship was on Row: {random_row} Column: {random_column}")   
-board[random_row][random_column] = "S"
-print(board_game(board))
+print("This", battle)
+
+
+def game_over(board):
+
+    print("Game Over. You did not sink the Battleship")
+     
+    board[random_row][random_column] = "S"
+    print(data, "'s Board")
+    print(board_game(board))
+
+    return board
+
+
+gameOver = game_over(board)
