@@ -60,20 +60,20 @@ data = get_name_input()
 
 # Create empty list to store the game's board.
 board = []
-ai = []
+# ai = []
 # guess_row, guess_column = [], []
 # ai_rand_row, ai_rand_col = [], []
 # Create a list of 5 lists, all 5 "o" characters long. Loop and add in to
 # the empty board variable above.
 for x in range(5):
     board.append(["o"] * 5)
-    ai.append(["."] * 5)
+    # ai.append(["."] * 5)
 # Define a Battleship Board function in board_game.
 # def computer_board(ai):
 #    """
 #    AI turn and Battleship board
 #    """
-MISS = "X"
+# MISS = "X"
 
 
 def board_game(board):
@@ -85,8 +85,8 @@ def board_game(board):
     for row in board:
         print((" ").join(row))
 
-    for row in ai:
-        print((" ").join(row))
+    # for row in ai:
+        # print((" ").join(row))
 
 
 random_row = randint(1, len(board)) - 1
@@ -104,17 +104,16 @@ for battle in range(5):
         guess_row = int(input("GUESS ROW:\n"))
         guess_column = int(input("GUESS COLUMN:\n"))
     if guess_row == random_row and guess_column == random_column:
-        print("HIT. Marked with a '*' on the board")
-        print(f"The Battleship sunk on Row:{guess_row}")
+        print("HIT!")
+        print(f"You sunk the Battleship sunk on Row:{guess_row}")
         print(f"Column:{guess_column}")
         print(data, "'s Board")
         board[guess_row][guess_column] = "*"
         board_game(board)
         break
     else:
-        print("MISSED. Marked with an 'X' on the board")
+        print("MISSED... Try again...")
         print(f"It was on Row:{random_row} and Column:{random_column}")
-        print("Battleship is marked with an 'S'")
         print(data, "'s Board")
         board[guess_row][guess_column] = "X"
         print(f"Batttleship was on Row:{random_row}Column:{random_column}")
@@ -125,5 +124,5 @@ for battle in range(5):
         guess_column = int(input("GUESS COLUMN:\n"))
     if battle == 4:
         board[random_row][random_column] = "S"
-        print("The Battlehip was too well hidden.. GAME OVER.")
+        print("The Battleship was too well hidden.. GAME OVER.")
         board_game(board)
