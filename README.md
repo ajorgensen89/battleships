@@ -6,12 +6,19 @@
 	- [Lucid Chaft](#lucidchart)
 * [Data Model](#data-model)
 	- [Lucid Chart]
+     - [Random Module](#random-module)
 * [Game Features](#game-features)
 * [Testing](testing.md)
 * [Clone Website](#clone-website)
 * [Deployment](#deployment)
 * [Technologies](#technologies)
 <br>
+
+# Data Model.
+## Lucid Chart.
+## Random Module.
+Imported for use in this website was __randomint__ from the random module provided as use within the website from external source.<br>
+[Python Random Module](https://www.w3schools.com/python/module_random.asp) for reference.
 
 # Game Features.
 
@@ -23,6 +30,21 @@ Method for showing a hit on a Battleship in combat with a "*" on the game board 
 Method for showing a miss on a Battleship in combat with a "X" on the game board and a MISSED statment.<br>
 Method for showing the Battleship's location is with an "S" on the game board.<br>
 ![MISSED image](images/readme-images/MISSEDexample.png)
+
+## LOCATION ALREADY TRIED.<br>
+If the row and column selected shows on the game board as an "X" already. Then this feature prompts you, it can not place an "X" on thre board, as you have already tried that guess of row and column combination.<br>
+You then get prompted that you have lost a turn to find the Battleship.<br>
+![ALREADY MISSED]()<br>
+I used assitance for the code to correct what I had written. I did try two different methods but could not quite get it to work for this instances.<br>
+First try. Within an IF statement.<br>
+![FIRST TRY](images/readme-images/IFalready.png)<br>
+Second try. I tried to append lists of the guesses given by the player.<br>
+![SECOND TRY](images/readme-images/Xalready.png)<br>
+End Result from code. See [RtoDto.net.](https://rtodto.net/a-simple-battleship-python-script/) in credit also.<br>
+It still has been adapted from the original code source.<br>
+Look of the code in its final state for this website.<br>
+![FINAL CODE USED](images/readme-images/XalreadyFix.png)
+
 
 ## END OF GAME.<br>
 At the end of 5 turns, the Battleship is revealed to the user as an "S" on the game board. With a statement saying the Battleship was to hard to find - GAME OVER.<br> 
@@ -66,9 +88,15 @@ https://p3-battleships.herokuapp.com/<br>
 <hr>
 
 # Credits.
-1. Codecadmey. Building the battleship game code on this website provided.a
-https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship
+1. [Codecadmey](https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship). Building the battleship game code on this website provided.
 <br>
 
-2. Love Sandwiches Coursework. Validating name.
-https://p3-battleships.herokuapp.com/
+2. [Love Sandwiches Coursework.](https://p3-battleships.herokuapp.com/) Validating name.<br>
+
+3. [RtoDto.net.](https://rtodto.net/a-simple-battleship-python-script/)<br>
+Assist with getting a working statment so if the board game was already marked with a 'miss - "X"', then the game would ask you for another row and column choice.
+
+4. [Python Random Module](https://www.w3schools.com/python/module_random.asp) for reference.
+
+# Technologies
+[Python Random Module](https://www.w3schools.com/python/module_random.asp) has been used to import a libary of data to use when needing random integers for this website. It helped to create a position for the batlleship in the Battleship game.

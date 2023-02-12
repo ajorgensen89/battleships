@@ -1,4 +1,5 @@
 from random import randint
+# Import file above for random integer production.
 
 
 def get_name_input():
@@ -10,16 +11,20 @@ def get_name_input():
     For example: Player1 or Bobby. Even @Bobby_BattleShip-game!
     """
     # Welcoming message with a few instructions to play.
-    print("=" * 30)
+    print("=" * 40)
     print("WELCOME TO BATTLESHIPS")
-    print("Select a row: 0 to 4")
+    print("Guess a row between: 0 to 4")
     print("and")
-    print("Select a column: 0 to 4")
-    print("=" * 30)
+    print("Guess a column between: 0 to 4")
+    print("=" * 40)
     print("A HIT is marked with - '*'")
     print("A MISS is marked with - 'X'")
-    print("If you sink a Battleship, it will be marked with - 'S'")
-    print("~" * 30)
+    print("You have 5 turns to guess correct.\n")
+    print("Keep track of your guesses as they count towards a turn..\n")
+    print("The computer will be one step closer to winning..")
+    print("Get GAME OVER and...")
+    print("The Battleship's position is mark with an - 'S'")
+    print("~" * 40)
     # Create input field for a user to create a name or use their own.
     while True:
         name_input = input("Enter a name:")
@@ -50,7 +55,7 @@ def validate_input(value):
     except EOFError as e_err:
         print(f"Your input caused an error: {e_err} Try again.")
         return False
-    
+
     return True
 
 # Saved name input in 'data' variable.
@@ -58,7 +63,7 @@ def validate_input(value):
 
 data = get_name_input()
 
-# Create empty list to store the game's board.
+# Create empty list to store the game's board Redefine in function.
 board = []
 # ai = []
 # guess_row, guess_column = [], []
@@ -98,7 +103,7 @@ guess_column = []
 
 for battle in range(5):
     guess_row = int(input("GUESS ROW:\n"))
-    guess_column = int(input("GUESS COLUMN:\n"))   
+    guess_column = int(input("GUESS COLUMN:\n"))
     if guess_row and guess_column < 0 or guess_row and guess_column >= 5:
         print("Re enter a valid row and column number between 0-4")
         guess_row = int(input("GUESS ROW:\n"))
@@ -111,6 +116,8 @@ for battle in range(5):
         board[guess_row][guess_column] = "*"
         board_game(board)
         break
+    elif board[guess_row][guess_column] == "X":
+        print("You have guessed that already. Try again.")
     else:
         print("MISSED... Try again...")
         print(f"It was on Row:{random_row} and Column:{random_column}")
@@ -118,10 +125,6 @@ for battle in range(5):
         board[guess_row][guess_column] = "X"
         print(f"Batttleship was on Row:{random_row}Column:{random_column}")
         board_game(board)
-    if guess_row and guess_column == str("X"):
-        print("You have guessed that elready. Try again.")
-        guess_row = int(input("GUESS ROW:\n"))
-        guess_column = int(input("GUESS COLUMN:\n"))
     if battle == 4:
         board[random_row][random_column] = "S"
         print("The Battleship was too well hidden.. GAME OVER.")
