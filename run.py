@@ -3,6 +3,11 @@ from random import randint
 global guess_row
 global guess_column
 
+# Created functions, with credit, from Love Sandwiches Walkthrough
+# via the course.
+# Adapted for use here. User must enter name into INPUT
+# before continuing into the game.
+
 
 def get_name_input():
     """
@@ -62,14 +67,18 @@ def validate_input(value):
 
     return True
 
+# Two functions created to help with validing input from the user.
+# Credit for layout from - 101 computing.net. In Credit for README.md file
+# Adaptations made to the code where necessary.
 
-def inputRow(message):
+
+def inputRow(integer):
     """
-    Validate
+    
     """
     while True:
         try:
-            guess_row = int(input(message))       
+            guess_row = int(input(integer))    
         except ValueError:
             print("Not an integer! Try again.")
             continue
@@ -78,13 +87,13 @@ def inputRow(message):
         break
 
 
-def inputColumn(message):
+def inputColumn(integer):
     """
-    Validate
+    Check to ensure there is an entry for column that is an integer. Raises an error if the input is empty
     """
     while True:
         try:
-            guess_column = int(input(message))       
+            guess_column = int(input(integer)) 
         except ValueError:
             print("Not an integer! Try again.")
             continue
@@ -162,10 +171,9 @@ while True:
         print("Nice try but you have guessed that already. Try again...")
     else:
         print("MISSED... Try again...")
-        print(f"It was on Row:{random_row} and Column:{random_column}")
+        print(f"Batttleship was on Row:{random_row} Column:{random_column}")
         print(data, "'s Board")
         board[guess_row][guess_column] = "X"
-        print(f"Batttleship was on Row:{random_row} Column:{random_column}")
         board_game(board)
     # if guess_row and guess_column == random_row and random_column:
     #    board[random_row][random_column] = "S"
