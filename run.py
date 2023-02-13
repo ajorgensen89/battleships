@@ -1,7 +1,7 @@
 from random import randint
 # Import file above for random integer production.
 global guess_row
-global guess_column
+global guess_col
 
 # Created functions, with credit, from Love Sandwiches Walkthrough
 # via the course.
@@ -72,13 +72,14 @@ def validate_input(value):
 # Adaptations made to the code where necessary.
 
 
-def inputRow(integer):
+def input_row(integer):
     """
-    
+    Check there is an entry for row that is an integer.
+    Raises an error if the input is empty or not an integer, like a letter.
     """
     while True:
         try:
-            guess_row = int(input(integer))    
+            guess_row = int(input(integer))
         except ValueError:
             print("Not an integer! Try again.")
             continue
@@ -87,18 +88,19 @@ def inputRow(integer):
         break
 
 
-def inputColumn(integer):
+def input_column(integer):
     """
-    Check to ensure there is an entry for column that is an integer. Raises an error if the input is empty
+    Check there is an entry for column that is an integer.
+    Raises an error if the input is empty or not an integer, like a letter.
     """
     while True:
         try:
-            guess_column = int(input(integer)) 
+            guess_col = int(input(integer))
         except ValueError:
             print("Not an integer! Try again.")
             continue
         else:
-            return guess_column
+            return guess_col
         break
 
 
@@ -110,7 +112,7 @@ data = get_name_input()
 # Create empty list to store the game's board Redefine in function.
 board = []
 # ai = []
-# guess_row, guess_column = [], []
+# guess_row, guess_col = [], []
 # ai_rand_row, ai_rand_col = [], []
 # Create a list of 5 lists, all 5 "o" characters long. Loop and add in to
 # the empty board variable above.
@@ -142,44 +144,47 @@ random_row = randint(1, len(board)) - 1
 random_column = randint(1, len(board[0])) - 1
 
 guess_row = []
-guess_column = []
+guess_col = []
 # For loop, to play the game on the grid created.
 # for battle in range(5):
-# carry_on = 'y'
+
 tally = 0
-# while carry_on == 'y':
 while True:
-    tally += 1
-    guess_row = inputRow("GUESS ROW:\n")
-    guess_column = inputColumn("GUESS COLUMN:\n")
+    guess_row = input_row("GUESS ROW:\n")
+    guess_col = input_column("GUESS COLUMN:\n")
     print("reaching here")
-    if (guess_row < 0 or guess_column < 0) or (guess_row >= 5 or guess_column >= 5):
-        print("Re enter a valid row and column number between 0-4")
-        guess_row = int(input("GUESS ROW:\n"))
-        guess_column = int(input("GUESS COLUMN:\n"))
-    if guess_row == random_row and guess_column == random_column:
+    while True:
+        if (guess_row < 0 or guess_col < 0) or (guess_row >= 5 or guess_col >= 5):
+            print("Re enter a valid row and column number between 0-4")
+            guess_row = int(input("GUESS ROW:\n"))
+            guess_col = int(input("GUESS COLUMN:\n"))
+        else:
+            break
+    if guess_row == random_row and guess_col == random_column:
         print("HIT!")
         print("You sunk the Battleship sunk on")
         print("_" * 40)
         print(f"Row:{guess_row}")
-        print(f"Column:{guess_column}")
+        print(f"Column:{guess_col}")
         print(data, "'s Board")
-        board[guess_row][guess_column] = "*"
+        board[guess_row][guess_col] = "*"
         board_game(board)
         break
-    elif board[guess_row][guess_column] == "X":
+    elif board[guess_row][guess_col] == "X":
         print("Nice try but you have guessed that already. Try again...")
     else:
         print("MISSED... Try again...")
         print(f"Batttleship was on Row:{random_row} Column:{random_column}")
         print(data, "'s Board")
-        board[guess_row][guess_column] = "X"
+        board[guess_row][guess_col] = "X"
         board_game(board)
-    # if guess_row and guess_column == random_row and random_column:
+        tally += 1
+    # if guess_row and guess_col == random_row and random_column:
     #    board[random_row][random_column] = "S"
     #    print("The Battleship was too well hidden.. GAME OVER.")
     #    board_game(board)
+        
     print("Turn:", tally)
-        # carry_on = input("Another game? ")
+        
 # def turn_count():
 #    turn = 0
