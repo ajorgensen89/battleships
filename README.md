@@ -3,7 +3,7 @@
 ## Table of Contents.
 
 * [User Experience](#user-experience)
-	- [Lucid Chaft](#lucidchart)
+	- [Lucid Chart](#lucid-chart)
 * [Data Model](#data-model)
 	- [Lucid Chart]
      - [Random Module](#random-module)
@@ -16,6 +16,14 @@
 
 # Data Model.
 ## Lucid Chart.
+I used [Lucid Chart](https://www.lucidchart.com/pages/) to create a flow chart of how to create a battleship game.
+1. Start - welcome message
+2. User name input - raises an error if no input is submitted and loops untill there is input.
+3. Select Row:Column for grid - Select the numbers between 0-4 for both row and column. The input should be validated if guessed before or invalid. You would have to try again.
+4. 
+5.
+6. <br>
+![Lucid Chart](images/readme-images/LucidChart.png)
 ## Random Module.
 Imported for use in this website was __randomint__ from the random module provided as use within the website from external source.<br>
 [Python Random Module](https://www.w3schools.com/python/module_random.asp) for reference.
@@ -63,11 +71,11 @@ An error prompt shows, and the player can put in another valid input for their r
 <hr>
 
 # Trial and errors.<br>
-## APPENDING LISTS<br>
+### APPENDING LISTS<br>
 Tried using Append() method to add a HIT or MISS to the Battleship Board but it was not working correctly. Which lead to it just being added to the list and not changing the current "o" character.<br>
 ![Append atempt](images/readme-images/Append.board.png)
 
-## READING ROW AND COLUMN OUT OR RANGE.<br>
+### READING ROW AND COLUMN OUT OR RANGE.<br>
 The selection for a range integer between was between 0 - 4. The code written did not cover this value so it was raising an error. One was needed as a row value and the other as a value for column in the grid for the Battleship game.<br>
 **Code -** This would register any number between -1 to 6. Which I did not want. <br>
 **random_row = randint(0, len(board))**<br>
@@ -78,7 +86,7 @@ This was corrected in the code.<br>
 **random_row = randint(1, len(board)) - 1**<br>
 **random_column = randint(1, len(board[0])) - 1**<br>
 
-## NO INPUT<br>
+### NO INPUT<br>
 If no input for the name is added. It will show as an error.
 Used and adapted code from the Love Sandwiches Coursework for validating name input.<br>
 This can be numbers, letters or special characters.<br>
@@ -86,6 +94,14 @@ For example: Player1 or Bobby. Even @Bobby_BattleShip-game!<br>
 https://p3-battleships.herokuapp.com/<br>
 ![NO INPUT image](images/readme-images/NOINPUTexample.png)
 <hr>
+
+### CHANGE IF - TUTOR SUPPORT
+
+![]()
+
+### INCONSISTENT ERROR.
+
+![]()
 
 # Credits.
 1. [Codecadmey](https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship). Building the battleship game code on this website provided.
