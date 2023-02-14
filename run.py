@@ -101,7 +101,7 @@ def want_to_play_again():
                 return guess_r
             break
 
-    def input_column(integer):
+    def input_col(integer):
         """
         Check there is an entry for column that is an integer.
         Raises an error if the input is empty or not an integer, like a letter.
@@ -193,9 +193,7 @@ def want_to_play_again():
     while True:
         print("\nEnter your guess for the Computer's Battleship postion..")
         print("You must find it first to win!")
-        validate_input("blah:")
-        guess_r = input_row("GUESS ROW:\n")
-        guess_c = input_column("GUESS COLUMN:\n")
+        guess_r, guess_c = input_row("GUESS ROW:\n"), input_col("COLUMN:")
         ai_guess_r = randint(1, len(player_board)) - 1
         ai_guess_c = randint(1, len(player_board[0])) - 1
         while True:
@@ -203,7 +201,7 @@ def want_to_play_again():
                 print("Re enter a valid row and column number between 0-4")
                 print("for the location of your ship on the Computer's board")
                 guess_r = input_row("GUESS ROW:\n")
-                guess_c = input_column("GUESS COLUMN:\n")
+                guess_c = input_col("GUESS COLUMN:\n")
             else:
                 break
         if guess_r == ai_s_row and guess_c == ai_s_col:
