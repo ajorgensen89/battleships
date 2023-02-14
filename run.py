@@ -178,7 +178,7 @@ def want_to_play_again():
             break
     tally = 0
     while True:
-        print("\nEnter your guess..")
+        print("\nEnter your guess...")
         guess_r, guess_c = input_row("ROW: "), input_col("COLUMN: ")
         ai_guess_r, ai_guess_c = randint(1, 5) - 1, randint(1, 5) - 1
         while True:
@@ -200,17 +200,14 @@ def want_to_play_again():
             user_board[ai_guess_r][ai_guess_c] = "S"
             ai_board[guess_r][guess_c] = "X"
             battleship_game(user_board, " ")
-            print("AI has Won this time.. in", tally, "goes!")
+            print("AI has Won this time.. with", tally, "misses!")
             break
         elif ai_board[guess_r][guess_c] == "X":
             print("~~~Nice try but you've guessed that before. Try again..~~~")
         elif user_board[ai_guess_r][ai_guess_c] == "X":
-            ai_guess_r = randint(1, len(user_board)) - 1
-            ai_guess_c = randint(1, len(user_board[0])) - 1
-            ai_board[guess_r][guess_c] = "X"
-            user_board[ai_guess_r][ai_guess_c] = "X"
-            battleship_game(user_board, " ")
-            battleship_game(" ", ai_board)
+            print("\nAI guessed the same as before..")
+            print("You BOTH have to re-select a target...")
+            print("Repeat your last guess if you like...")
         else:
             print("\nMISSED... Try again...")
             print(data, "'s Board")
