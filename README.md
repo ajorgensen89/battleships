@@ -3,9 +3,8 @@
 ## Table of Contents.
 
 * [User Experience](#user-experience)
-	- [Lucid Chart](#lucid-chart)
 * [Data Model](#data-model)
-	- [Lucid Chart]
+	- [Lucid Chart](#lucid-chart)
      - [Random Module](#random-module)
 * [Game Features](#game-features)
 * [Testing](testing.md)
