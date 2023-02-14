@@ -114,5 +114,7 @@ Assist with getting a working statment so if the board game was already marked w
 
 4. [Python Random Module](https://www.w3schools.com/python/module_random.asp) for reference.
 
+5. A method from[Stack Overflow](https://stackoverflow.com/questions/41718538/how-do-i-insert-a-restart-game-option) to restart the game. 
+
 # Technologies
 [Python Random Module](https://www.w3schools.com/python/module_random.asp) has been used to import a libary of data to use when needing random integers for this website. It helped to create a position for the batlleship in the Battleship game.
