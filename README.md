@@ -1,19 +1,29 @@
 # Battleship Game Created for Python Project.
+This Python Coded project is based on a long running game called Battlehships. The essence of this game is played with two players.<br>
+It can be played one vs computer on many different platforms or advanced into a multiplayer game on a computer or on a boardgame.<br>
+Each player, which can include an Artificial Intelligence(AI), has a Battleship which they place on a board, for the other player to find and sink.<br>
+The way to find and sink the Battleship is by taking it in turns to guess a Row and a Column to make a co-ordinate on that board.<br>
+If the players combined row and column guessed co-ordinate, is correct, the Battleship is found.<br>
+The first player to sink the Battleship is the winner.<br>
+The oringal boardgame Battleships also offers different size ships, so you have to hit a combination of points on the board before the Battleship sinks.<br>
+The Battleship can also be part of a larger fleet, meaning you and your opponent have more Battleships to sink before winning.
 
 ## Table of Contents.
 
 * [User Experience](#user-experience)
-* [Data Model](#data-model)
+* [Flow Chart](#flow-chart)
 	- [Lucid Chart](#lucid-chart)
-     - [Random Module](#random-module)
 * [Game Features](#game-features)
+* [Trial and Errors](#trial-and-errors)
 * [Testing](testing.md)
 * [Clone Website](#clone-website)
-* [Deployment](#deployment)
+* [Credits](#credits)
 * [Technologies](#technologies)
+     - [Module](#module)
+* [Deployment](#deployment)
 <br>
 
-# Data Model.
+# Flow Chart.
 ## Lucid Chart.
 I used [Lucid Chart](https://www.lucidchart.com/pages/) to create a flow chart of how to create a battleship game.
 1. Start - welcome message
@@ -23,9 +33,10 @@ I used [Lucid Chart](https://www.lucidchart.com/pages/) to create a flow chart o
 5.
 6. <br>
 ![Lucid Chart](images/readme-images/LucidChart.png)
-## Random Module.
-Imported for use in this website was __randomint__ from the random module provided as use within the website from external source.<br>
-[Python Random Module](https://www.w3schools.com/python/module_random.asp) for reference.
+
+
+
+[Back to the top](#battleship-game-created-for-python-project)
 
 # Game Features.
 
@@ -40,8 +51,10 @@ Method for showing the Battleship's location is with an "S" on the game board.<b
 
 ## LOCATION ALREADY TRIED.<br>
 If the row and column selected shows on the game board as an "X" already. Then this feature prompts you, it can not place an "X" on thre board, as you have already tried that guess of row and column combination.<br>
-You then get prompted that you have lost a turn to find the Battleship.<br>
-![ALREADY MISSED]()<br>
+A prompted is given to show you have tried that row and column combination already and to try again.<br>
+![ALREADY MISSED](images/readme-images/AiandPreg.png)<br>
+The AI would also have a prompt and the user can take appropriate action too.<br>
+![AI Guess](images/readme-images/AIReguess.png)<br>
 I used assitance for the code to correct what I had written. I did try two different methods but could not quite get it to work for this instances.<br>
 First try. Within an IF statement.<br>
 ![FIRST TRY](images/readme-images/IFalready.png)<br>
@@ -51,7 +64,6 @@ End Result from code. See [RtoDto.net.](https://rtodto.net/a-simple-battleship-p
 It still has been adapted from the original code source.<br>
 Look of the code in its final state for this website.<br>
 ![FINAL CODE USED](images/readme-images/XalreadyFix.png)
-
 
 ## END OF GAME.<br>
 At the end of 5 turns, the Battleship is revealed to the user as an "S" on the game board. With a statement saying the Battleship was to hard to find - GAME OVER.<br> 
@@ -67,23 +79,37 @@ There is a prompt created for the player to guess a row and column value to try 
 An error prompt shows, and the player can put in another valid input for their row and column guesses.
 ![GUESS PROMPT](images/readme-images/ValidRC.png)
 
+## VALIDATING INPUT.<br>
+Validating input became abit of trail and error in itself, to find the best approach, for creating code to test that certain input was valid. It is an important feature to this website to ensure the player or an AI can play correctly wihtout crashing the game.<br>
+For the 'name'. It checked the **input** entry was not empty before continuing with the next part of the code.<br>
+The **input** for validating entry for certain prompts needed to checked differently. It needed to be an integer, aswell as, being an integer form a particular range.<br>
+The range for this website, was the size of the boardgame.<br>
+If the placement of a Battleship or, a guessed row or colum entry was an integer, it still needed to be within a range to play the game and make enteries on the boards provided.<br>
+To see how this was tested click to view the [Testing](testing.md) file here.
+
+
 <hr>
 
-# Trial and errors.<br>
+[Back to the top](#battleship-game-created-for-python-project)
+
+# Trial and Errors.<br>
 ### APPENDING LISTS<br>
-Tried using Append() method to add a HIT or MISS to the Battleship Board but it was not working correctly. Which lead to it just being added to the list and not changing the current "o" character.<br>
+Tried using Append() method to add a HIT or MISS to the Battleship Board but it was not working correctly. Which lead to it just being added to the list and not changing the current "o" character signifying grid points at this point.<br>
 ![Append atempt](images/readme-images/Append.board.png)
 
-### READING ROW AND COLUMN OUT OR RANGE.<br>
-The selection for a range integer between was between 0 - 4. The code written did not cover this value so it was raising an error. One was needed as a row value and the other as a value for column in the grid for the Battleship game.<br>
-**Code -** This would register any number between -1 to 6. Which I did not want. <br>
-**random_row = randint(0, len(board))**<br>
-**random_column = randint(0, len(board[0]))**<br> 
+### WRONG RANDOM NUMBER GENERATED.<br>
+The selection for a range integer is between 0 - 4. The code written did not cover this value so it was raising an error.<br>
+This would register any number between -1 to 6. Which I did not want. <br>
+**Incorrect code -**
+**Code - ai_ship_row = randint(0, len(ai_board))**<br>
+**Code - ai_ship_col = randint(0, len(ai_board[0]))** <br> 
 ![Range error](images/readme-images/ERRORrun.png)<br>
+
 This was corrected in the code.<br>
-**Corrected code -** This code registered at the 0-4 range I needed<br>
-**random_row = randint(1, len(board)) - 1**<br>
-**random_column = randint(1, len(board[0])) - 1**<br>
+**Corrected code -** 
+**Code - ai_ship_row = randint(1, len(ai_board)) - 1**<br>
+**Code - ai_ship_col = randint(1, len(ai_board[0])) - 1**<br>
+This code registered at the 0-4 range I needed<br>
 
 ### NO INPUT<br>
 If no input for the name is added. It will show as an error.
@@ -98,11 +124,36 @@ https://p3-battleships.herokuapp.com/<br>
 
 ![]()
 
-### INCONSISTENT ERROR.
 
-![]()
+<hr>
+
+[Back to the top](#battleship-game-created-for-python-project)
+
+
+# Deployment
+
+
+
+[Back to the top](#battleship-game-created-for-python-project)
+
+<hr>
+
+# Technologies
+
+## Module.
+Imported for use in this website was __randomint__ from the random module provided as use within the website from external source.<br>
+[Python Random Module](https://www.w3schools.com/python/module_random.asp) has been used to import a libary of data to use when needing random integers for this website. It helped to create a position for the batlleship in the Battleship game.
+
+## Python Tutor.
+[Python Tutor](https://pythontutor.com/visualize.html). Helps to test, run and visualize parts of code.
+
+
+[Back to the top](#battleship-game-created-for-python-project)
+
+<hr>
 
 # Credits.
+
 1. [Codecadmey](https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship). I ran through and completed this example of building the battleship game code on this website provided. It had useful prompts and helped improve my understanding to create the code for the website.<br>
 Adapted to suit what it was needed for.
 <br>
@@ -119,5 +170,11 @@ Assist with getting a working statment so if the board game was already marked w
 6. [Single underline _](https://programming.vip/docs/underline-double-underline-in-python.html). Method used suggested by this site to improve on Pylint suggestions.
 
 7. [101 Computing](https://www.101computing.net/number-only/) Helped with an exmaple of validating input. Adapted to suit what it was needed for.
-# Technologies
-[Python Random Module](https://www.w3schools.com/python/module_random.asp) has been used to import a libary of data to use when needing random integers for this website. It helped to create a position for the batlleship in the Battleship game.
+
+8. [Largest](https://largest.org/technology/battleships/) provided an image of a Battleship.
+
+<hr>
+
+[Back to the top](#battleship-game-created-for-python-project)
+
+<hr>

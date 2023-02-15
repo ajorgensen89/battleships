@@ -174,8 +174,8 @@ def want_to_play_again():
         for row in ai_board:
             print((" ").join(row))
 
-    ai_s_row = randint(1, len(ai_board)) - 1
-    ai_s_col = randint(1, len(ai_board[0])) - 1
+    ai_ship_row = randint(1, len(ai_board)) - 1
+    ai_ship_col = randint(1, len(ai_board[0])) - 1
 
     while True:
         print("\n   Place Battleship on the AI's board for your enemy to find")
@@ -185,11 +185,11 @@ def want_to_play_again():
     tally = 0
     while True:
         print("\nEnter your guess...")
-        guess_r = input_row("ROW: ") 
+        guess_r = input_row("ROW: ")
         guess_c = input_col("COLUMN: ")
         ai_guess_r = randint(1, len(user_board)) - 1
         ai_guess_c = randint(1, len(user_board)) - 1
-        if guess_r == ai_s_row and guess_c == ai_s_col:
+        if guess_r == ai_ship_row and guess_c == ai_ship_col:
             print(data, "'s Board!")
             ai_board[guess_r][guess_c] = "S"
             battleship_game(" ", ai_board)
