@@ -19,7 +19,7 @@ def get_name_input():
     For example: Player1 , User1 or Bobby. Even @Bobby_BattleShip-game!
     """
     # Welcoming message with a few instructions to play.
-    print("=" * 50)
+    print("=" * 45)
     print("        ***WELCOME TO BATTLESHIPS***")
     print("\n      Guess a ROW between: 0 to 4")
     print("ROW NUMBERS are left most row(0), to right(4)")
@@ -30,10 +30,10 @@ def get_name_input():
     print("You get to place your Battleship on the board.")
     print("The Battleship is marked with 'S' on your board")
     print("\nPlayer's board is shown 1st. AI's board is 2nd.")
-    print("=" * 50)
+    print("=" * 45)
     print("TO PLAY AGAIN - If you want to play again at the end:")
     print("'y' for yes and 'n' for no and the game will exit.")
-    print("=" * 50)
+    print("=" * 45)
     # Create input field for a user to create a name or use their own.
     while True:
         # Name input. Whitespace removed.
@@ -175,6 +175,7 @@ def want_to_play_again():
     user_board, ai_board = [], []
     # Create a list of 5 lists, all 5 "o" characters long. Loop and add in to
     # the empty user_board variable above.
+    # "_" used for variable name as not unpacked or used in this instance.
     for _ in range(5):
         user_board.append(["."] * 5)
         ai_board.append(["."] * 5)
@@ -228,50 +229,58 @@ def want_to_play_again():
         # Tally up the turns taken.
         tally += 1
         # Checks incase the AI randomly generates the co-ordinates again.
-        # (row and column get repeated.)
+        # Row and column get repeated.
+        # List character, "." is changed to a "X".
         if user_board[ai_guess_r][ai_guess_c] == "X":
             ai_guess_r = randint(1, len(user_board)) - 1
             ai_guess_c = randint(1, len(user_board)) - 1
-            # Prints a MISS 'X' on the board.
+            # Prints a MISS 'X' on the board depending on the Ai's guess
+            # of row and column.
             user_board[ai_guess_r][ai_guess_c] = "X"
         # If users guesses match the Ai's ship position -
         # HIT '*' is displayed. And the turns are tallyed up.
+        # It changes the "." to a "*" on the board at specified points.
         if guess_r == ai_ship_row and guess_c == ai_ship_col:
-            # Places the users guess on the Ai's board.
+            # Places both the users guess on the Ai's board by changing
+            # the list character from "." to a "*".
             ai_board[guess_r][guess_c] = "*"
             # Prints the Ai's Board
             battleship_game(" ", ai_board)
-            print("\n______HIT! You sunk the AI's Battleship first!______")
-            print("It took", tally, "turns to sunk the Battleship!\n")
+            print("\n_____HIT! You sunk the AI's Battleship first!_____")
+            print("It took", tally, "turns to sink the Battleship!\n")
             # Ends game loop.
             break
+        # This compares the input to each other.
         # If the Ai's guess matches the Battleship place by the user, AI wins.
         # HIT '*' is placed on the users board. AI wins.
         if ai_guess_r == s_row and ai_guess_c == s_col:
-            print("\n_______AI HIT your ship!_______")
+            print("\n______AI HIT your ship!______")
             # Places the AI's guess on the users board.
+            # Edits the boards "." and changes it to a "*"
             user_board[ai_guess_r][ai_guess_c] = "*"
             # Prints the users board with winning HIT.
             battleship_game(user_board, " ")
             print("AI has Won this time.. with", tally, "guesses!")
             # Ends game loop.
             break
-        # If a row and column has already been used. This identifies that.
-        # And you try again.
+        # If a row and column has already been used and changed to an "X".
+        # This can identify that and you try again.
         if ai_board[guess_r][guess_c] == "X":
-            print("~" * 50)
-            print("~~~Nice try but you've guessed that before. Try again..~~~")
+            print("~" * 45)
+            print("~~Nice try but you've guessed that before. Try again..~~")
             # Makes sure the tally does not increase when new
             # co-ordinates are re-selected (row and column).
             tally -= 1
         else:
             print("\nMISSED... Try again...\n")
             ai_board[guess_r][guess_c] = "X"
+            # This edits this particular position of the board.
+            # Changes the "." to a "X".
             user_board[ai_guess_r][ai_guess_c] = "X"
             # Prints user board with their name above it.
             print(data, "'s Board")
             battleship_game(user_board, " ")
-            # Print AI's board.
+            # Print AI's board and name for the board.
             print("AI's Board!")
             battleship_game("", ai_board)
 

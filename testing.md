@@ -24,6 +24,13 @@ The code underlined with __green__ checks the range, starting from number 0 and 
 This image below shows the function working if something that it not an integer is entered.<br>
 ![Not an integer](images/readme-images/NotInt.png)
 
+### NO INPUT FOR NAME<br>
+If no input for the name is added. It will show as an error.
+Used and adapted code from the Love Sandwiches Coursework for validating name input.<br>
+This can be numbers, letters or special characters.<br>
+For example: Player1 or Bobby. Even @Bobby_BattleShip-game!<br>
+https://p3-battleships.herokuapp.com/<br>
+![NO INPUT image](images/readme-images/NOINPUTexample.png)
 
 ### Inconsistent error.
 A number of different errors occurred when trying to create statements to check if the numbers being entered where within a particular range. In this instance, between 0 and 4.
@@ -35,27 +42,40 @@ This was improved upon as you find in [Game Features](#game-features) with _vali
 <br>
 Demonstrated through [101 Computing](https://www.101computing.net/number-only/), the example helped with a layout for checking the input from a user much better. This was used and adapted to improve and remove these inconsistent errors.<br>
 
+## PROBLEM TOOL in GITHUB.<br>
+This tool is avaliable for use through [Github](https://github.com/). I assisted with checking issues with the code straight away.
+Here is one example, but it could inform you of unused variables and a number of different errors in the code written.
+![Problem Tool](images/readme-images/ProblemTool.png)
 
+<hr>
 
-
-## [Pylint](https://pylint.org/)
+# [Pylint](https://pylint.org/)
 
 [Pylint](https://pylint.org/) tool was used to validate my [Python](https://www.python.org/) code. It ensured that code being created conformed to certain rules.<br>
-It helps with the user experience and understanding of what is written.<br>
-It ensured development of code had certain rules to follow. Suggested fixes occured when checking pylint. <br>
+It helps with the user experience and understanding.<br>
+It ensured code devlopment followed certain rules. Suggested Fixes occured when checking pylint. <br>
 One was the use of **col** as a variable name, used when creating the board game's grid. It was not used or unpacked for use again in any instance and [Pylint](https://pylint.org/) raised it as a concern under __Unused Variable__.<br>
 <br>
 
 ![Single variable](images/readme-images/UnusedVcol.png)
 To fix this, single underscore **'_'** for a variable name was used. <br>
-Variable was not used again in this instance. Only for creating the layout of the board itself.
+Variable was not used again in this instance. Only for creating the layout of the board itself. It could be used as 'row'.
 ![Single Underscore](images/readme-images/UnusedVariable.png)
+<hr>
+
+I had to ensure [Pylint](https://pylint.org/) tool was installed on my computer for use.<br>
+
 <hr>
 
 ## [Python Tutor](https://pythontutor.com/visualize.html)
 [Python Tutor](https://pythontutor.com/visualize.html) helps you to visulize the code being created. Whether it a loop, or fucntion to test. It really helped to visualize when creating parts of code.
 
-## PEP Validator
+## [PEP Validator](https://www.pythonchecker.com/)
 
 Passed my code through [PEP Validator](https://www.pythonchecker.com/) and no significant errors arose.
 ![PEP Valiadtor](images/readme-images/PEP8Validate.png)
+
+## [Code institue PEP Validator](https://pep8ci.herokuapp.com/)
+This was provided to me by my Mentor through the [Code Institute](https://codeinstitute.net/) Course as an additional Linter.
+No issues arose to be corrected.<br>
+![CI linter](images/readme-images/CILinter.png)
