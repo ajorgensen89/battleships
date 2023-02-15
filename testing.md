@@ -38,12 +38,12 @@ Demonstrated through [101 Computing](https://www.101computing.net/number-only/),
 
 
 
-## [Pylint](https://pylint.org/#install)
+## [Pylint](https://pylint.org/)
 
-[Pylint](https://pylint.org/#install) tool was used to validate my [Python](https://www.python.org/) code. It ensured that code being created conformed to certain rules.<br>
+[Pylint](https://pylint.org/) tool was used to validate my [Python](https://www.python.org/) code. It ensured that code being created conformed to certain rules.<br>
 It helps with the user experience and understanding of what is written.<br>
 It ensured development of code had certain rules to follow. Suggested fixes occured when checking pylint. <br>
-One was the use of **col** as a variable name, used when creating the board game's grid. It was not used or unpacked for use again in any instance and [Pylint](https://pylint.org/#install) raised it as a concern under __Unused Variable__.<br>
+One was the use of **col** as a variable name, used when creating the board game's grid. It was not used or unpacked for use again in any instance and [Pylint](https://pylint.org/) raised it as a concern under __Unused Variable__.<br>
 <br>
 
 ![Single variable](images/readme-images/UnusedVcol.png)
@@ -57,5 +57,5 @@ Variable was not used again in this instance. Only for creating the layout of th
 
 ## PEP Validator
 
-[PEP Validator](https://www.pythonchecker.com/)
-![]()
+Passed my code through [PEP Validator](https://www.pythonchecker.com/) and no significant errors arose.
+![PEP Valiadtor](images/readme-images/PEP8Validate.png)
