@@ -1,4 +1,9 @@
 # Battleship Game Created for Python Project.
+<br>
+<hr>
+[Deployable Link to Project site.](https://avaj-battleship-python.herokuapp.com/)<br>
+<br>
+<hr>
 This Python Coded project is based on a long running game called Battlehships. The essence of this game is played with two players.<br>
 It can be played one vs computer on many different platforms or advanced into a multiplayer game on a computer or on a boardgame.<br>
 Each player, which can include an Artificial Intelligence(AI), has a Battleship which they place on a board, for the other player to find and sink.<br>
@@ -39,6 +44,12 @@ A _'Run Program'_ button is at the top of the screen for the user to reload the 
 ### Steps
 Some steps and ideas to take when building this project.<br>
 ![Ideas](images/readme-images/Basictemplate.png)<br>
+
+<hr>
+
+## Responsive Design.
+[Ai I responsive?](https://ui.dev/amiresponsive) was used to check its look on a number of different devices and responsiveness.
+![Responsive Desgin](images/readme-images/AiIResp.png)
 
 <hr>
 
@@ -203,14 +214,13 @@ Imported for use in this website was __randomint__ from the random module provid
 ## Github.
 [Github](https://github.com/) was used to edit and build the website using [Python](https://www.python.org/) code.
 
-## Responsive Design.
-[Responsive Design Checker](https://www.responsivedesignchecker.com/) was used to check its look on a number of different devices.
-
 ## Broswer combatability.
-1. 
-2. 
-3. 
-4. 
+Checked the websites combatability with the following browers:
+1. Apple Safari.
+2. Google Chrome.
+3. Opera Browser.
+4. Microsoft Edge.
+Ran the site with no issues.
 
 <hr>
 
