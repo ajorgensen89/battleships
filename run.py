@@ -4,13 +4,7 @@ to use for random number generation.
 '''
 from random import randint
 
-# Starting the Battleship game inside a function so game can be
-# played again after completing game.
-# 'y' for yes, to continue.
-# Exit game using this function 'n' for no.
-
-
-# Created functions, with credit, from Love Sandwiches Walkthrough
+# Created function, with credit, from Love Sandwiches Walkthrough
 # via the course.
 # Adapted for use here. User must enter name into INPUT
 # before continuing into the game.
@@ -22,7 +16,7 @@ def get_name_input():
     Run while loop to check user had entered a name for their boardgame.
     Break loop if valid 'input' has been added. Continue with the game.
     This can be numbers, letters or special characters.
-    For example: Player1 or Bobby. Even @Bobby_BattleShip-game!
+    For example: Player1 , User1 or Bobby. Even @Bobby_BattleShip-game!
     """
     # Welcoming message with a few instructions to play.
     print("=" * 50)
@@ -32,8 +26,10 @@ def get_name_input():
     print("\n      Guess a COLUMN between: 0 to 4")
     print("COLUMN NUMBERS are top column(0), to bottom(4)")
     print("\n     A MISS is marked with - 'X'")
-    print("\n     HIT the Battleship - 'S' - will appear")
+    print("\n     HIT the Battleship - '*' - will appear")
     print("You get to place your Battleship on the board.")
+    print("The Battleship is marked with 'S' on the starting board")
+    print("and then hidden.")
     print("\nPlayer's board is shown 1st. AI's board is 2nd.")
     print("=" * 50)
     print("TO PLAY AGAIN - If you want to play again at the end:")
@@ -41,9 +37,10 @@ def get_name_input():
     print("=" * 50)
     # Create input field for a user to create a name or use their own.
     while True:
-        name_input = input("Enter a name: ")
+        # Name input. Whitespace removed.
+        name_input = input("Enter a name: ").strip()
         name = name_input
-        # If a valid input is filled in, break from while loop and continue
+        # Valid input - break from while loop and continue
         # with the Battleship game.
         if validate_input(name):
             name = name_input
@@ -51,6 +48,8 @@ def get_name_input():
     # Return name value, to function, to be used to label the user's board.
     # Saved in variable - data.
     return name
+
+# Function below raises error for arguments. Such as 'name' above.
 
 
 def validate_input(value):
@@ -61,6 +60,8 @@ def validate_input(value):
     Uses except: To print out Error.
     """
     try:
+        # If an argument is returned False. 
+        # Error is raised until it returns True.
         if not value:
             raise EOFError(
                 "It's empty... You need to enter something here."
@@ -72,12 +73,15 @@ def validate_input(value):
     return True
 
 
-# Two functions created to help with validing input from the user.
+# Functions created to help with validing input from the user.
 # Credit for layout from - 101 computing.net. In Credit for README.md file
 # Adaptations made to the code where necessary.
+
+
 def input_row(integer):
     """
-    Check there is an entry for row that is an integer.
+    Check players entry for row, is an integer.
+    Also checks entry is between a set range(0-4)
     """
     while True:
         try:
@@ -94,7 +98,8 @@ def input_row(integer):
 
 def input_col(integer):
     """
-    Check there is an entry for column that is an integer.
+    Check players entry for column, is an integer.
+    Also checks entry is between a set range(0-4)
     """
     while True:
         try:
@@ -147,6 +152,11 @@ def ships_col(ship):
             return s_col
         break
 
+# Starting the Battleship game inside a function so game can be
+# played again after completing game.
+# 'y' for yes, to continue.
+# Exit game using this function 'n' for no.
+
 
 def want_to_play_again():
     """
@@ -178,10 +188,16 @@ def want_to_play_again():
     ai_ship_col = randint(1, len(ai_board[0])) - 1
 
     while True:
-        print("\n   Place Battleship on the AI's board for your enemy to find")
+        print("\n   Place Battleship on your board...")
+        print("\n          ...for the enemy to find")
+        battleship_game(user_board, " ")
         s_row = ships_row("\nSHIP ROW: ")
         s_col = ships_col("SHIP COLUMN: ")
+        user_board[s_row][s_col] = "S"
         break
+
+    print("... Battleship is moving into position...")
+
     tally = 0
     while True:
         print("\nEnter your guess...")
@@ -202,15 +218,16 @@ def want_to_play_again():
             user_board[ai_guess_r][ai_guess_c] = "S"
             ai_board[guess_r][guess_c] = "X"
             battleship_game(user_board, " ")
-            print("AI has Won this time.. with", tally, "misses!")
+            print("AI has Won this time.. with", tally, "guesses!")
             break
         elif ai_board[guess_r][guess_c] == "X":
             print("~~~Nice try but you've guessed that before. Try again..~~~")
         elif user_board[ai_guess_r][ai_guess_c] == "X":
-            print("\nAI guessed the same as before..")
-            print("You BOTH have to re-select a target...")
-            print("Repeat your last guess if you like...")
+            ai_guess_r = randint(1, len(user_board)) - 1
+            ai_guess_c = randint(1, len(user_board)) - 1
+            tally -= 1
         else:
+            print(f"ship IS on Row:{ai_ship_row} Column:{ai_ship_col}\n") 
             print("\nMISSED... Try again...")
             print(data, "'s Board")
             ai_board[guess_r][guess_c] = "X"
@@ -222,10 +239,22 @@ def want_to_play_again():
 
 
 while True:
-    want_to_play_again()
-    restart_battleships = input("AGAIN? 'y'- yes or 'n'- no. Then hit Enter: ")
-    if restart_battleships == "y":
-        continue
-    if restart_battleships == "n":
-        print("\nThanks for playing Battlehips..")
-        break
+    try:
+        YES = "y"
+        NO = "n"
+        want_to_play_again()
+        print("PLAY AGAIN? Select'y'- yes or 'n'- no.")
+        restart_battleships = input("Then hit Enter: ")
+        if restart_battleships == YES:
+            continue
+        if restart_battleships == NO:
+            print("\nThanks for playing Battlehips..")
+            print("Ill bring a bigger Fleet next time!")
+            break
+        if not YES or NO:
+            raise ValueError()
+    except ValueError:
+        print("'y' for yes or 'n' for no. The Press Enter")
+        restart_battleships = input("'y'- yes or 'n'- no. Then hit Enter: ")
+
+
