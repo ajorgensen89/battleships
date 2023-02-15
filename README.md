@@ -103,17 +103,21 @@ https://p3-battleships.herokuapp.com/<br>
 ![]()
 
 # Credits.
-1. [Codecadmey](https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship). Building the battleship game code on this website provided.
+1. [Codecadmey](https://www.codecademy.com/courses/learn-python/lessons/battleship/exercises/welcome-to-battleship). I ran through and completed this example of building the battleship game code on this website provided. It had useful prompts and helped improve my understanding to create the code for the website.<br>
+Adapted to suit what it was needed for.
 <br>
 
 2. [Love Sandwiches Coursework.](https://p3-battleships.herokuapp.com/) Validating name.<br>
 
 3. [RtoDto.net.](https://rtodto.net/a-simple-battleship-python-script/)<br>
-Assist with getting a working statment so if the board game was already marked with a 'miss - "X"', then the game would ask you for another row and column choice.
+Assist with getting a working statment so if the board game was already marked with a 'miss - "X"', then the game would ask you for another row and column choice. Adapted to suit what it was needed for.
 
 4. [Python Random Module](https://www.w3schools.com/python/module_random.asp) for reference.
 
-5. A method from[Stack Overflow](https://stackoverflow.com/questions/41718538/how-do-i-insert-a-restart-game-option) to restart the game. 
+5. A method from[Stack Overflow](https://stackoverflow.com/questions/41718538/how-do-i-insert-a-restart-game-option) to restart the game. Adapted to suit this website.
 
+6. [Single underline _](https://programming.vip/docs/underline-double-underline-in-python.html). Method used suggested by this site to improve on Pylint suggestions.
+
+7. [101 Computing](https://www.101computing.net/number-only/) Helped with an exmaple of validating input. Adapted to suit what it was needed for.
 # Technologies
 [Python Random Module](https://www.w3schools.com/python/module_random.asp) has been used to import a libary of data to use when needing random integers for this website. It helped to create a position for the batlleship in the Battleship game.

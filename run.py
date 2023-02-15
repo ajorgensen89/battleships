@@ -82,8 +82,10 @@ def input_row(integer):
     while True:
         try:
             guess_r = int(input(integer))
+            if guess_r not in range(0, 5):
+                raise ValueError()
         except ValueError:
-            print("Not an integer! Try again.")
+            print("Invalid choice: Choose an integer between 0-4")
             continue
         else:
             return guess_r
@@ -97,8 +99,10 @@ def input_col(integer):
     while True:
         try:
             guess_c = int(input(integer))
+            if guess_c not in range(0, 5):
+                raise ValueError()
         except ValueError:
-            print("Not an integer! Try again.")
+            print("Invalid choice: Choose an integer between 0-4")
             continue
         else:
             return guess_c
@@ -117,8 +121,10 @@ def ships_row(ship):
     while True:
         try:
             s_row = int(input(ship))
+            if s_row not in range(0, 5):
+                raise ValueError()
         except ValueError:
-            print("Not an integer! Try again.")
+            print("Invalid choice: Choose an integer between 0-4")
             continue
         else:
             return s_row
@@ -132,8 +138,10 @@ def ships_col(ship):
     while True:
         try:
             s_col = int(input(ship))
+            if s_col not in range(0, 5):
+                raise ValueError()
         except ValueError:
-            print("Not an integer! Try again.")
+            print("Invalid choice: Choose an integer between 0-4")
             continue
         else:
             return s_col
@@ -150,7 +158,7 @@ def want_to_play_again():
     user_board, ai_board = [], []
     # Create a list of 5 lists, all 5 "o" characters long. Loop and add in to
     # the empty user_board variable above.
-    for col in range(5):
+    for _ in range(5):
         user_board.append(["."] * 5)
         ai_board.append(["."] * 5)
 
@@ -166,27 +174,21 @@ def want_to_play_again():
         for row in ai_board:
             print((" ").join(row))
 
-    ai_s_row, ai_s_col = randint(1, 5) - 1, randint(1, 5) - 1
+    ai_s_row = randint(1, len(ai_board)) - 1
+    ai_s_col = randint(1, len(ai_board[0])) - 1
 
     while True:
         print("\n   Place Battleship on the AI's board for your enemy to find")
-        s_row, s_col = ships_row("\nSHIP ROW: "), ships_col("SHIP COLUMN: ")
-        if (s_row < 0 or s_col < 0) or (s_row >= 5 or s_col >= 5):
-            print("....THE LOCATION MUST BE IN THE OCEAN....")
-        else:
-            print("....Battleship is in position....")
-            break
+        s_row = ships_row("\nSHIP ROW: ")
+        s_col = ships_col("SHIP COLUMN: ")
+        break
     tally = 0
     while True:
         print("\nEnter your guess...")
-        guess_r, guess_c = input_row("ROW: "), input_col("COLUMN: ")
-        ai_guess_r, ai_guess_c = randint(1, 5) - 1, randint(1, 5) - 1
-        while True:
-            if (guess_r < 0 or guess_c < 0) or (guess_r >= 5 or guess_c >= 5):
-                print("Re enter a valid row and column number between 0-4")
-                guess_r, guess_c = input_row("ROW: "), input_col("COLUMN: ")
-            else:
-                break
+        guess_r = input_row("ROW: ") 
+        guess_c = input_col("COLUMN: ")
+        ai_guess_r = randint(1, len(user_board)) - 1
+        ai_guess_c = randint(1, len(user_board)) - 1
         if guess_r == ai_s_row and guess_c == ai_s_col:
             print(data, "'s Board!")
             ai_board[guess_r][guess_c] = "S"
